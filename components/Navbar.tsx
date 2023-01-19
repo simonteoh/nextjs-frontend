@@ -14,7 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import Link from 'next/link';
 
-const pages = ['Sign Up'];
+const pages = [{name: 'Sign Up', url: 'signup'},{name: 'Login', url: 'login'}, {name: 'Admin', url: 'admin'}];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function Navbar() {
@@ -89,8 +89,8 @@ function Navbar() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Link href="/signup"><Typography textAlign="center">{page}</Typography></Link>
+                <MenuItem key={page.name} onClick={handleCloseNavMenu}>
+                  <Link href={page.url}><Typography textAlign="center">{page.url}</Typography></Link>
                 </MenuItem>
               ))}
             </Menu>
@@ -117,11 +117,11 @@ function Navbar() {
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
-                key={page}
+                key={page.name}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
-                {page}
+                <Link href={page.url}><Typography textAlign="center">{page.name}</Typography></Link>
               </Button>
             ))}
           </Box>
