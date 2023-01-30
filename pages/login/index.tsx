@@ -6,7 +6,6 @@ import "react-toastify/dist/ReactToastify.css";
 import styles from '../../styles/Signup.module.css';
 import { useRouter } from 'next/router';
 
-
 function Login() {
     const router = useRouter();
     const inputForm = useRef<HTMLFormElement>(null);
@@ -24,7 +23,8 @@ function Login() {
                 },{
                     position: toast.POSITION.TOP_RIGHT
                 }
-            ).then(function(){
+            ).then(function(res){
+                localStorage.setItem('key', res.data.token)
                 router.push('/')
             });
         } catch (error) {
