@@ -24,11 +24,11 @@ function Login() {
                     position: toast.POSITION.TOP_RIGHT
                 }
             ).then(function(res){
-                localStorage.setItem('key', res.data.token)
+                localStorage.setItem('token', res.data.token)
                 router.push('/')
             });
         } catch (error) {
-            
+            console.log(error)
         }
 
       };
@@ -39,8 +39,8 @@ function Login() {
         <div className={styles.signup}>
         <form ref={inputForm} onSubmit={handleSubmit}>
                 <h1>Login</h1>
-                <TextField id="outlined-basic" label="Username" variant="outlined" name='username'/>
-                <TextField id="outlined-basic" label="Password" variant="outlined" name='password' type="password"/>
+                <TextField  label="Username" variant="outlined" name='username'/>
+                <TextField  label="Password" variant="outlined" name='password' type="password"/>
                 <Button variant="contained" type='submit'>Login</Button>
             </form>
         </div>

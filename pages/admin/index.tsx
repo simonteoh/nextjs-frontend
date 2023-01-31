@@ -1,7 +1,5 @@
 import React from 'react';
-import Router from 'next/router';
 import axios from 'axios';
-import jwt from 'jsonwebtoken';
 import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -13,7 +11,13 @@ import Paper from '@mui/material/Paper';
 import TablePagination from '@mui/material/TablePagination';
 
 export const getStaticProps = async() => {
-    let res: any = await axios.get('http://localhost:5000/user')
+  const token = typeof window === 'undefined' ? localStorage.getItem('token') : window.localStorage.getItem('token');
+
+    let res: any = await axios.get('http://localhost:5000/user',{
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    })
 
    return {  
     props: {
