@@ -12,7 +12,7 @@ function Index() {
   }
   const handleInputRef = () => {
     const inputValue = inputRef.current?.value;
-    console.log(inputValue)
+    console.log(inputValue);
     if (inputValue) {
       setPoint(parseInt(inputValue));
     }
