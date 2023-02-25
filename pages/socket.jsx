@@ -24,24 +24,10 @@ const socket = io('http://localhost:5000')
 const Queue = () => {
 
   const inputRef = useRef(null);
-  // const [count, setCount] = useState(0);
   const [point, setPoint] = useState('');
-  const [intervalId, setIntervalId] = useState(null);
 
-  const startInterval = () => {
-    
-    const id = setInterval(() => {
-      socket.emit('refreshPoint');
-    }, 5000);
-    setIntervalId(id);
-  };
-  
   useEffect(() => {
     console.log('use effect called')
-    if (!intervalId) {
-      console.log('interval start')
-      startInterval();
-    }
     socket.on('updatedPoint', (point) => {
       console.log('Received updated point:', point);
       setPoint(point);
@@ -50,10 +36,8 @@ const Queue = () => {
     return () => {
       console.log('socket closed')
       socket.off('updatedPoint');
-      clearInterval(intervalId);
-      console.log('clear interval', intervalId)
     };
-  }, [intervalId, point]);
+  }, [point]);
   
   const handleJoinQueue = () => {
     if(socket){
