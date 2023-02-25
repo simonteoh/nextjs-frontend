@@ -2,7 +2,7 @@ import React, { SetStateAction, useRef, useState, useEffect } from 'react';
 import axios from 'axios'
 import { io } from 'socket.io-client';
 
-function index() {
+function Index() {
   const socket = io('http://localhost:5000')
   const [point, setPoint] = useState<SetStateAction<number>>(0);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -38,4 +38,4 @@ function index() {
   );
 }
 
-export default index;
+export default Index;
