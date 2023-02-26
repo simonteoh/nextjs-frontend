@@ -31,9 +31,9 @@ function Index() {
   }, [point]);
   return (
     <div>
-      Home page
+      Home page<br></br>
 
-      <Button variant="contained" onClick={handleInputRef}>Update point</Button>
+      <Button variant="contained" onClick={handleInputRef}>Update point</Button><br></br>
       <input type="number" ref={inputRef}/>
     </div>
   );
