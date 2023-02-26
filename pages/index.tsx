@@ -1,6 +1,7 @@
 import React, { SetStateAction, useRef, useState, useEffect } from 'react';
 import axios from 'axios'
 import { io } from 'socket.io-client';
+import { Button } from '@mui/material';
 
 function Index() {
   const socket = io('http://localhost:5000')
@@ -32,7 +33,7 @@ function Index() {
     <div>
       Home page
 
-      <button onClick={handleInputRef}>Update point</button>
+      <Button variant="contained" onClick={handleInputRef}>Update point</Button>
       <input type="number" ref={inputRef}/>
     </div>
   );
